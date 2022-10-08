@@ -50,6 +50,10 @@ userSchema.pre('save', async function(next){
         const hashedPassword = await bcrypt.hash(this.password, salt);
         this.password = hashedPassword;
 
+        if(this.email === process.env.ADMIN_EMAIL.toLocaleLowerCase()){
+            this.role = roles.admin;
+        }
+
     } catch (error) {
         next(error);
     }
