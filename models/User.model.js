@@ -8,19 +8,22 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Please provide a name'],
-        maxlength: [50, 'Name should be under 50 characters']
+        maxlength: [50, 'Name should be under 50 characters'],
+        trim: true
     },
     email: {
         type: String,
         required: [true, 'Please provide an email'],
         validate: [validator.isEmail, 'Please provide a valid email'],
         lowercase: true,
-        unique: true
+        unique: true,
+        trim: true
     },
     password: {
         type: String,
         required: true,
-        minLength: [6, 'Password should be atleast 6 characters']
+        minLength: [6, 'Password should be atleast 6 characters'],
+        trim: true
     },
     role: {
         type: String,
