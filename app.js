@@ -34,9 +34,11 @@ app.get('/', async(req, res)=>{
 
 const user = require('./routes/userRoute');
 const product = require('./routes/productRoute');
+const order = require('./routes/orderRoute');
 
 app.use('/api/v1', user);
 app.use('/api/v1', product);
+app.use('/api/v1', order);
 
 
 app.use(async(req, res, next)=>{
