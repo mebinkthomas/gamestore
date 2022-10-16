@@ -6,8 +6,16 @@ const createError = require('http-errors');
 const connectDB = require('./config/db');
 const cookieParser = require('cookie-parser');
 const fileUpload = require('express-fileupload');
+const cloudinary = require('cloudinary');
 
 connectDB();
+
+//cloudinary config
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET
+});
 
 app.use(morgan('dev'));
 
@@ -25,8 +33,10 @@ app.get('/', async(req, res)=>{
 });
 
 const user = require('./routes/userRoute');
+const product = require('./routes/productRoute');
 
 app.use('/api/v1', user);
+app.use('/api/v1', product);
 
 
 app.use(async(req, res, next)=>{

@@ -8,6 +8,6 @@ module.exports = {
         action: 'Action',
         adventure: 'Adventure',
         racing: 'Racing',
-        Sports: 'Sports'
+        sports: 'Sports'
     }
 }

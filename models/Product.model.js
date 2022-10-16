@@ -33,8 +33,8 @@ const productSchema = new mongoose.Schema({
     ],
     category: {
         type: String,
-        required: true,
-        enum: [categories.action, categories.adventure, categories.racing, categories.Sports]
+        required: [true, 'Please provide a valid game category'],
+        enum: [categories.action, categories.adventure, categories.racing, categories.sports]
     },
     brand: {
         type: String,
